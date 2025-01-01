@@ -1,4 +1,6 @@
 [core]
     remote = storage
+['remote "local"']
+    url = /tmp/dvc-storage
 ['remote "storage"']
-    url = https://remote.dvc.org/get-started-pools
+    url = s3://cambioml-ml-dvc-exp/dvc-demo
