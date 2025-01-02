@@ -46,7 +46,7 @@ read-only HTTP remote.
 
 ```console
 $ dvc remote list
-storage  https://remote.dvc.org/get-started-pools
+storage  s3://cambioml-ml-dvc-exp/dvc-demo/
 ```
 
 You can run [`dvc pull`](https://man.dvc.org/pull) to download the data:
