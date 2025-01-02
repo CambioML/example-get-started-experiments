@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>DVC Plot</title>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script>
+    
+    <style>
+        table {
+            border-spacing: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id = "results_train_plots_metrics_dice_multi_tsv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"step": "0", "dice_multi": "0.49580101619694394", "rev": "workspace"}, {"step": "1", "dice_multi": "0.49580101619694394", "rev": "workspace"}, {"step": "2", "dice_multi": "0.8766646097625987", "rev": "workspace"}, {"step": "3", "dice_multi": "0.8936879311736603", "rev": "workspace"}, {"step": "4", "dice_multi": "0.9118651155490118", "rev": "workspace"}, {"step": "5", "dice_multi": "0.9161465775794592", "rev": "workspace"}, {"step": "6", "dice_multi": "0.9179930312558884", "rev": "workspace"}, {"step": "7", "dice_multi": "0.9188775776917966", "rev": "workspace"}, {"step": "8", "dice_multi": "0.9195107098499655", "rev": "workspace"}]}, "title": {"text": "results/train/plots/metrics/dice_multi.tsv", "anchor": "middle"}, "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "encoding": {"x": {"field": "step", "type": "quantitative", "title": "step"}, "color": {"field": "rev", "scale": {"domain": ["workspace"], "range": ["#945dd6"]}}, "strokeDash": {}}, "layer": [{"layer": [{"params": [{"name": "grid", "select": "interval", "bind": "scales"}], "mark": "line"}, {"transform": [{"filter": {"param": "hover", "empty": false}}], "mark": "point"}], "encoding": {"y": {"field": "dice_multi", "type": "quantitative", "title": "dice_multi", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}, "transform": [{"loess": "dice_multi", "on": "step", "groupby": ["rev"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "step", "type": "quantitative", "title": "step"}, "y": {"field": "dice_multi", "type": "quantitative", "title": "dice_multi", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}, {"mark": {"type": "circle", "size": 10}, "encoding": {"x": {"aggregate": "max", "field": "step", "type": "quantitative", "title": "step"}, "y": {"aggregate": {"argmax": "step"}, "field": "dice_multi", "type": "quantitative", "title": "dice_multi", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}, {"transform": [{"calculate": "datum.rev", "as": "pivot_field"}, {"pivot": "pivot_field", "op": "mean", "value": "dice_multi", "groupby": ["step"]}], "mark": {"type": "rule", "tooltip": {"content": "data"}, "stroke": "grey"}, "encoding": {"opacity": {"condition": {"value": 0.3, "param": "hover", "empty": false}, "value": 0}}, "params": [{"name": "hover", "select": {"type": "point", "fields": ["step"], "nearest": true, "on": "mouseover", "clear": "mouseout"}}]}]};
+            vegaEmbed('#results_train_plots_metrics_dice_multi_tsv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "results_train_plots_metrics_eval_loss_tsv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"step": "0", "loss": "0.08454583585262299", "rev": "workspace"}, {"step": "1", "loss": "0.062004152685403824", "rev": "workspace"}, {"step": "2", "loss": "0.03342636302113533", "rev": "workspace"}, {"step": "3", "loss": "0.02735254541039467", "rev": "workspace"}, {"step": "4", "loss": "0.021378060802817345", "rev": "workspace"}, {"step": "5", "loss": "0.02095862105488777", "rev": "workspace"}, {"step": "6", "loss": "0.01942897029221058", "rev": "workspace"}, {"step": "7", "loss": "0.01913689635694027", "rev": "workspace"}, {"step": "8", "loss": "0.01921185664832592", "rev": "workspace"}]}, "title": {"text": "results/train/plots/metrics/eval/loss.tsv", "anchor": "middle"}, "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "encoding": {"x": {"field": "step", "type": "quantitative", "title": "step"}, "color": {"field": "rev", "scale": {"domain": ["workspace"], "range": ["#945dd6"]}}, "strokeDash": {}}, "layer": [{"layer": [{"params": [{"name": "grid", "select": "interval", "bind": "scales"}], "mark": "line"}, {"transform": [{"filter": {"param": "hover", "empty": false}}], "mark": "point"}], "encoding": {"y": {"field": "loss", "type": "quantitative", "title": "loss", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}, "transform": [{"loess": "loss", "on": "step", "groupby": ["rev"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "step", "type": "quantitative", "title": "step"}, "y": {"field": "loss", "type": "quantitative", "title": "loss", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}, {"mark": {"type": "circle", "size": 10}, "encoding": {"x": {"aggregate": "max", "field": "step", "type": "quantitative", "title": "step"}, "y": {"aggregate": {"argmax": "step"}, "field": "loss", "type": "quantitative", "title": "loss", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}, {"transform": [{"calculate": "datum.rev", "as": "pivot_field"}, {"pivot": "pivot_field", "op": "mean", "value": "loss", "groupby": ["step"]}], "mark": {"type": "rule", "tooltip": {"content": "data"}, "stroke": "grey"}, "encoding": {"opacity": {"condition": {"value": 0.3, "param": "hover", "empty": false}, "value": 0}}, "params": [{"name": "hover", "select": {"type": "point", "fields": ["step"], "nearest": true, "on": "mouseover", "clear": "mouseout"}}]}]};
+            vegaEmbed('#results_train_plots_metrics_eval_loss_tsv', spec);
+        </script>
+    </div>
+    
+
+    <div id = "results_train_plots_metrics_train_loss_tsv">
+        <script type = "text/javascript">
+            var spec = {"$schema": "https://vega.github.io/schema/vega-lite/v5.json", "data": {"values": [{"step": "0", "loss": "0.3241966664791107", "rev": "workspace"}, {"step": "1", "loss": "0.08131241798400879", "rev": "workspace"}, {"step": "2", "loss": "0.05959690734744072", "rev": "workspace"}, {"step": "3", "loss": "0.04763089865446091", "rev": "workspace"}, {"step": "4", "loss": "0.040508173406124115", "rev": "workspace"}, {"step": "5", "loss": "0.03556434437632561", "rev": "workspace"}, {"step": "6", "loss": "0.03189672529697418", "rev": "workspace"}, {"step": "7", "loss": "0.029238209128379822", "rev": "workspace"}, {"step": "8", "loss": "0.02716890536248684", "rev": "workspace"}]}, "title": {"text": "results/train/plots/metrics/train/loss.tsv", "anchor": "middle"}, "width": 300, "height": 300, "params": [{"name": "smooth", "value": 0.001, "bind": {"input": "range", "min": 0.001, "max": 1, "step": 0.001}}], "encoding": {"x": {"field": "step", "type": "quantitative", "title": "step"}, "color": {"field": "rev", "scale": {"domain": ["workspace"], "range": ["#945dd6"]}}, "strokeDash": {}}, "layer": [{"layer": [{"params": [{"name": "grid", "select": "interval", "bind": "scales"}], "mark": "line"}, {"transform": [{"filter": {"param": "hover", "empty": false}}], "mark": "point"}], "encoding": {"y": {"field": "loss", "type": "quantitative", "title": "loss", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}, "transform": [{"loess": "loss", "on": "step", "groupby": ["rev"], "bandwidth": {"signal": "smooth"}}]}, {"mark": {"type": "line", "opacity": 0.2}, "encoding": {"x": {"field": "step", "type": "quantitative", "title": "step"}, "y": {"field": "loss", "type": "quantitative", "title": "loss", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}, {"mark": {"type": "circle", "size": 10}, "encoding": {"x": {"aggregate": "max", "field": "step", "type": "quantitative", "title": "step"}, "y": {"aggregate": {"argmax": "step"}, "field": "loss", "type": "quantitative", "title": "loss", "scale": {"zero": false}}, "color": {"field": "rev", "type": "nominal"}}}, {"transform": [{"calculate": "datum.rev", "as": "pivot_field"}, {"pivot": "pivot_field", "op": "mean", "value": "loss", "groupby": ["step"]}], "mark": {"type": "rule", "tooltip": {"content": "data"}, "stroke": "grey"}, "encoding": {"opacity": {"condition": {"value": 0.3, "param": "hover", "empty": false}, "value": 0}}, "params": [{"name": "hover", "select": {"type": "point", "fields": ["step"], "nearest": true, "on": "mouseover", "clear": "mouseout"}}]}]};
+            vegaEmbed('#results_train_plots_metrics_train_loss_tsv', spec);
+        </script>
+    </div>
+    
+
+        <div
+            id="results_evaluate_plots_images_REGION_1-24_0_1024_0_1024_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>results/evaluate/plots/images/REGION_1-24_0_1024_0_1024.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_results_evaluate_plots_images_REGION_1-24_0_1024_0_1024.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="results_evaluate_plots_images_REGION_1-24_0_1024_1024_2048_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>results/evaluate/plots/images/REGION_1-24_0_1024_1024_2048.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_results_evaluate_plots_images_REGION_1-24_0_1024_1024_2048.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="results_evaluate_plots_images_REGION_1-24_0_1024_2048_3072_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>results/evaluate/plots/images/REGION_1-24_0_1024_2048_3072.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_results_evaluate_plots_images_REGION_1-24_0_1024_2048_3072.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="results_evaluate_plots_images_REGION_1-24_0_1024_2816_3840_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>results/evaluate/plots/images/REGION_1-24_0_1024_2816_3840.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_results_evaluate_plots_images_REGION_1-24_0_1024_2816_3840.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="results_evaluate_plots_images_REGION_1-24_1024_2048_0_1024_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>results/evaluate/plots/images/REGION_1-24_1024_2048_0_1024.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_results_evaluate_plots_images_REGION_1-24_1024_2048_0_1024.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="results_evaluate_plots_images_REGION_1-24_1024_2048_1024_2048_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>results/evaluate/plots/images/REGION_1-24_1024_2048_1024_2048.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_results_evaluate_plots_images_REGION_1-24_1024_2048_1024_2048.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="results_evaluate_plots_images_REGION_1-24_1024_2048_2048_3072_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>results/evaluate/plots/images/REGION_1-24_1024_2048_2048_3072.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_results_evaluate_plots_images_REGION_1-24_1024_2048_2048_3072.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="results_evaluate_plots_images_REGION_1-24_1024_2048_2816_3840_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>results/evaluate/plots/images/REGION_1-24_1024_2048_2816_3840.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_results_evaluate_plots_images_REGION_1-24_1024_2048_2816_3840.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="results_evaluate_plots_images_REGION_1-24_1136_2160_0_1024_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>results/evaluate/plots/images/REGION_1-24_1136_2160_0_1024.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_results_evaluate_plots_images_REGION_1-24_1136_2160_0_1024.png">
+                </div>
+                
+        </div>
+
+        <div
+            id="results_evaluate_plots_images_REGION_1-24_1136_2160_1024_2048_png"
+            style="border:1px solid black;text-align:center;
+            white-space: nowrap;overflow-y:hidden;">
+            <p>results/evaluate/plots/images/REGION_1-24_1136_2160_1024_2048.png</p>
+
+                <div
+                    style="border:1px dotted black;margin:2px;display:
+                    inline-block;
+                    overflow:hidden;margin-left:8px;">
+                    <p>workspace</p>
+                    <img src="static/workspace_results_evaluate_plots_images_REGION_1-24_1136_2160_1024_2048.png">
+                </div>
+                
+        </div>
+</body>
+</html>

@@ -1,4 +1,7 @@
 [core]
     remote = storage
+[exp]
+    auto_push = true
 ['remote "storage"']
-    url = https://remote.dvc.org/get-started-pools
+    url = s3://cambioml-ml-dvc-exp/dvc-demo/
+    version_aware = true
